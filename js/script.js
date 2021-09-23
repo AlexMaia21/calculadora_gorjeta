@@ -26,7 +26,8 @@ inputValor.onkeyup = function(){
 	} else {
 		// Valor válido
 		numero = Number(inputValor.value)
-		if(porcentagem !== 0){
+		console.log(numero)
+		if(porcentagem !== 0 && numberPeopleForm.value !== ''){
 			calcularTudo()
 		}
 	}
@@ -38,10 +39,11 @@ botoes.forEach(btn => {
 		formBotoes.style.border = ''
 		formBotoes.value = ''
 		botoes.forEach(b => b.removeAttribute('id'))
-		if(document.querySelector('.erro') === null && inputValor.value.length !== 0){
+		if(document.querySelector('.erro') === null){
 			porcentagem = Number(btn.value)
+			console.log(porcentagem)
 			btn.setAttribute('id', 'background-button')
-			if(numberPeopleForm.value !== ''){
+			if(numberPeopleForm.value !== '' && inputValor.value !== ''){
 				calcularTudo()
 			}
 		}
@@ -55,12 +57,11 @@ formBotoes.onkeyup = function(){
 	if(isNaN(Number(formBotoes.value)) || formBotoes.value === '' || Number(formBotoes.value) === 0){
 		formBotoes.style.border = '1px solid red'
 	} else {
-		if(document.querySelector('.erro') === null && inputValor.value.length !== 0){
-			formBotoes.style.border = ''
-			porcentagem = Number(formBotoes.value)
-			if(numberPeopleForm.value !== ''){
-				calcularTudo()
-			}
+		formBotoes.style.border = ''
+		porcentagem = Number(formBotoes.value)
+		console.log(porcentagem)
+		if(numberPeopleForm.value !== '' && inputValor.value !== ''){
+			calcularTudo()
 		}
 	}
 }
@@ -76,8 +77,11 @@ numberPeopleForm.onkeyup = function(){
 		mostrarErro('Valor não pode ser zero', numberPeopleForm, numberPeopleContainer)
 	} else {
 		//Valor válido
-		if(document.querySelector('.erro') === null && inputValor.value.length !== 0){
-			numeroPessoas = Number(numberPeopleForm.value)
+		numeroPessoas = Number(numberPeopleForm.value)
+		console.log(numeroPessoas)
+		if(document.querySelector('.erro') === null && inputValor.value !== '' && porcentagem !== 0){
+			console.log(document.querySelector('.erro'))
+			console.log(inputValor.value)
 			calcularTudo()
 		}
 	}
